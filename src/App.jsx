@@ -1,16 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Segment, Container } from 'semantic-ui-react';
+import Spreadsheet from './components/Spreadsheet.js';
 
 const App = () => (
   <div className="App">
-    <div className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h2>Welcome to React</h2>
-    </div>
-    <p className="App-intro">
-      To get started, edit <code>src/App.js</code> and save to reload.
-    </p>
+    <Container>
+      <Segment>
+        <Spreadsheet />
+      </Segment>
+    </Container>
   </div>
 );
 
