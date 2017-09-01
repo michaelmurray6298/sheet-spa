@@ -1,6 +1,6 @@
 import React from 'react';
 import { Segment, Container } from 'semantic-ui-react';
-import Spreadsheet from './components/Spreadsheet.js';
+import Spreadsheet from './Components/Spreadsheet.js';
 
 const App = () => (
   <div className="App">
