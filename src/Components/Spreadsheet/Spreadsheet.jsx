@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
 import { Table } from 'semantic-ui-react';
-import { fetchSheet } from '../../actions';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import data from '../../seeds'
+import { connect } from 'react-redux';
+import { fetchSheet } from '../../actions';
+import data from '../../seeds';
 
 
 class Spreadsheet extends Component {
-
-
   componentDidMount() {
-  this.props.fetchSheet();
-}
-
+    this.props.fetchSheet();
+  }
 
 
   render() {
-
-    const { sheet } = this.props.sheet;
-    console.log(sheet);
+    // const { sheet } = this.props;
     const header = data.values[0];
-    const rows = data.values.slice(1, data.values.length)
+    const rows = data.values.slice(1, data.values.length);
     return (
       <div className="spreadsheet">
         <Table celled striped definition>
@@ -41,18 +36,18 @@ class Spreadsheet extends Component {
 }
 
 
-const mapStateToProps = state => {
-  const sheet = state.sheet
+const mapStateToProps = (state) => {
+  const sheet = state.sheet;
   return {
     sheet,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchSheet
-}, dispatch)
+  fetchSheet,
+}, dispatch);
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(Spreadsheet)
+  mapDispatchToProps,
+)(Spreadsheet);

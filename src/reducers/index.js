@@ -1,30 +1,35 @@
-import { combineReducers } from 'redux'
-import { SHEET_RETRIEVED } from '../actions'
+import { combineReducers } from 'redux';
+import { SHEET_RETRIEVED } from '../actions';
 
-function sheet(state = { range: '', majorDimension: '', header: {cellIds: [], cellsById: {}}, rowIds: [],  rowsById: {}}, action) {
+function sheet(state = { range: '', majorDimension: '', header: { cellIds: [], cellsById: {} }, rowIds: [], rowsById: {} }, action) {
   switch (action.type) {
     case SHEET_RETRIEVED:
-    const { range, majorDimension, header, rows } = action
-    return {
-      range: range,
-      majorDimension: majorDimension,
-      header: {cellIds: header.map((value, idx) => {return idx + 1}), cellsById: header.reduce((result, value, idx) => {
-          result[idx + 1] = value;
-          return result
-        }, {})}, rowIds: rows.map((row, idx) => {return idx}), rowsById: rows.reduce((result, value, idx) => {
-          result[idx + 1] = {cellIds: value.map((value, cellIdx) => {return cellIdx + 1}), cellsById: value.reduce((result, cellValue, cellIdx) => {
-              result[cellIdx + 1] = cellValue;
-              return result
-            }, {})}
-          return result
-        }, {})
-      }
-
+      return {
+        range: action.range,
+        majorDimension: action.majorDimension,
+        header: { cellIds: action.header.map((value, idx) => idx + 1),
+          cellsById: action.header.reduce((result, value, idx) => {
+            const cells = result;
+            cells[idx + 1] = value;
+            return result;
+          }, {}) },
+        rowIds: action.rows.map((row, idx) => idx + 1),
+        rowsById: action.rows.reduce((result, value, idx) => {
+          const cells = result;
+          cells[idx + 1] = { cellIds: value.map((val, cellIdx) => cellIdx + 1),
+            cellsById: value.reduce((result2, cellValue, cellIdx) => {
+              const cellResult = result2;
+              cellResult[cellIdx + 1] = cellValue;
+              return result;
+            }, {}) };
+          return result;
+        }, {}),
+      };
     default:
-    return state
+      return state;
   }
 }
 
 export default combineReducers({
   sheet,
-})
+});
