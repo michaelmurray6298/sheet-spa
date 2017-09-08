@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -13,7 +14,6 @@ class Spreadsheet extends Component {
 
 
   render() {
-    // const { sheet } = this.props;
     const header = data.values[0];
     const rows = data.values.slice(1, data.values.length);
     return (
@@ -35,6 +35,9 @@ class Spreadsheet extends Component {
   }
 }
 
+Spreadsheet.propTypes = {
+  fetchSheet: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => {
   const sheet = state.sheet;
