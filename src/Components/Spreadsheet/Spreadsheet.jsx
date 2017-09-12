@@ -24,12 +24,12 @@ class Spreadsheet extends Component {
         <Table celled striped definition>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell />
               { headerCellIds.map(headerCellId => <HeaderCell key={headerCellId} headerCellId={headerCellId} />) }
             </Table.Row>
           </Table.Header>
-          { rowIds.map(rowId => <Row key={rowId} rowId={rowId} />) }
-          <Table.Body />
+          <Table.Body>
+            { rowIds.map(rowId => <Row key={rowId} rowId={rowId} />) }
+          </Table.Body>
         </Table>
       </div>
     );

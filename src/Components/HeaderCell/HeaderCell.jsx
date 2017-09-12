@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 
 const HeaderCell = ({ headerCellId, headerCellsById }) => (
-  <div>
-    {`${headerCellsById[headerCellId]}`}
-  </div>
+  <Table.HeaderCell>{`${headerCellsById[headerCellId]}`}</Table.HeaderCell>
 );
 
 

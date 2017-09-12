@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 
 const Cell = ({ cellId, cellsById }) => (
-  <div>
+  <Table.Cell>
     {`${cellsById[cellId]}`}
-  </div>
+  </Table.Cell>
 );
 
 

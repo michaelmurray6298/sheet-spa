@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import Cell from '../Cell/Cell';
 
 const Row = props => (
-  <div>
+  <Table.Row>
     { props.rowsById[`${props.rowId}`].cellIds.map(cellId => <Cell key={cellId} cellId={cellId} rowId={props.rowId} />) }
-  </div>
+  </Table.Row>
 );
 
 
