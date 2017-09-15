@@ -30,7 +30,7 @@ export class Login extends Component {
                   as="a"
                   href={`${GOOGLE_AUTH_URL}`}
                   className="butterButton"
-                  size="massive"
+                  size="large"
                   content="Login with Google"
                   icon="google"
                 />

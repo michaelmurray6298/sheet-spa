@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Segment, Container } from 'semantic-ui-react';
 import Spreadsheet from './Components/Spreadsheet/Spreadsheet';
@@ -13,4 +13,4 @@ const App = () => (
   </div>
 );
 
-export default connect(mapStateToProps)(App);
+export default connect()(App);
