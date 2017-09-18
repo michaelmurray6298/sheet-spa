@@ -18,8 +18,9 @@ Cell.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const cellIds = state.sheet.rowsById[ownProps.rowId].cellIds;
-  const cellsById = state.sheet.rowsById[ownProps.rowId].cellsById;
+  const id = ownProps.widgetId;
+  const cellIds = state.widgets.byId[id].rowsById[ownProps.rowId].cellIds;
+  const cellsById = state.widgets.byId[id].rowsById[ownProps.rowId].cellsById;
   return {
     cellIds,
     cellsById,

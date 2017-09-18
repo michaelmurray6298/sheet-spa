@@ -15,9 +15,10 @@ HeaderCell.propTypes = {
   headerCellsById: PropTypes.shape({ 1: 'Header A' }).isRequired,
 };
 
-const mapStateToProps = (state) => {
-  const headerCellIds = state.sheet.header.headerCellIds;
-  const headerCellsById = state.sheet.header.headerCellsById;
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.widgetId;
+  const headerCellIds = state.widgets.byId[id].header.headerCellIds;
+  const headerCellsById = state.widgets.byId[id].header.headerCellsById;
   return {
     headerCellIds,
     headerCellsById,

@@ -1,6 +1,5 @@
-require('dotenv').config();
 
-const apiUrl = process.env.REACT_APP_SHEET_API_URL;
+const apiUrl = 'http://localhost:8003/graphql';
 
 export default class SHEETS_API {
   static fetchData(request) {
