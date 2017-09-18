@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import SHEET_API from './utils/Api';
 import App from './App.jsx';
 
-const middleware = [ thunkMiddleware.withExtraArgument({ SHEET_API })];
+const middleware = [thunkMiddleware.withExtraArgument({ SHEET_API })];
 const mockStore = configureStore(middleware);
 describe('App component', () => {
   it('should render a component with props as specified ', () => {
