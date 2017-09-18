@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Segment, Container } from 'semantic-ui-react';
 import Spreadsheet from './Components/Spreadsheet/Spreadsheet';

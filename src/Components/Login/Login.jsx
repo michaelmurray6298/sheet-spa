@@ -1,21 +1,19 @@
 /* eslint-disable import/no-named-as-default, no-shadow, consistent-return */
-
 import React, { Component } from 'react';
-import cookie from 'react-cookies';
 import { Grid, Card, Button } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+import './Login.css';
+
 // NOTE all commented out code will be used in future mapping of state, dispatching of actions etc
 // import { renderSheets } from '../../actions/renderActions';
 // import injectWidgetId from '../../utils/utils';
-import './Login.css';
-
+/* eslint-disable react/prefer-stateless-function */
 export class Login extends Component {
   // componentDidMount() {
   //   if (cookie.load('userName') !== undefined) {
   //     const name = cookie.load('userName');
-  //     this.props.renderSheets();
+  //     // NOTE write function to trigger the render of the main sheets page
   //   }
   // }
   render() {

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { fetchSheet } from '../../actions';
 import HeaderCell from '../HeaderCell/HeaderCell';
 import Row from '../Row/Row';
-import Login from '../Login/Login';
+import { Login } from '../Login/Login';
 
 class Spreadsheet extends Component {
   componentDidMount() {
@@ -21,7 +21,7 @@ class Spreadsheet extends Component {
 
     return (
       <div className="spreadsheet">
-        <Login></Login>
+        <Login />
         <Table celled striped definition>
           <Table.Header>
             <Table.Row>
