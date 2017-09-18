@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import Cell from '../Cell/Cell';
+import injectWidgetId from '../../utils/utils';
 
 const Row = props => (
   <Table.Row>
@@ -25,6 +26,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-)(Row);
+export default injectWidgetId(connect(mapStateToProps)(Row));

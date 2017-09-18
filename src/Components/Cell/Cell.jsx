@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import injectWidgetId from '../../utils/utils';
 
 
 const Cell = ({ cellId, cellsById }) => (
@@ -26,6 +27,4 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
-export default connect(
-  mapStateToProps,
-)(Cell);
+export default injectWidgetId(connect(mapStateToProps)(Cell));

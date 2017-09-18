@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import logger from 'redux-logger';
 import rootReducer from './reducers';
 import SHEET_API from './utils/Api';
 
@@ -7,7 +8,9 @@ import SHEET_API from './utils/Api';
 
 const store = createStore(
   rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunkMiddleware.withExtraArgument({ SHEET_API })),
+  logger,
 );
 
 

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { fetchSheet } from '../../actions';
 import HeaderCell from '../HeaderCell/HeaderCell';
 import Row from '../Row/Row';
+import injectWidgetId from '../../utils/utils';
 
 
 class Spreadsheet extends Component {
@@ -52,7 +53,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   fetchSheet,
 }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Spreadsheet);
+export default injectWidgetId(connect(mapStateToProps, mapDispatchToProps)(Spreadsheet));
