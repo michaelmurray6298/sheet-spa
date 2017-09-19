@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.sheets = undefined;
 
 var _redux = require('redux');
 
@@ -46,7 +47,9 @@ function sheet() {
       return state;
   }
 }
-
+var sheets = exports.sheets = (0, _redux.combineReducers)({
+  sheet: sheet
+});
 var initialState = {
   ids: ['sheets'],
   byId: {}
