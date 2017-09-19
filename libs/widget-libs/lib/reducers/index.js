@@ -47,9 +47,7 @@ function sheet() {
       return state;
   }
 }
-var sheets = exports.sheets = (0, _redux.combineReducers)({
-  sheet: sheet
-});
+var sheets = exports.sheets = sheet;
 var initialState = {
   ids: ['sheets'],
   byId: {}

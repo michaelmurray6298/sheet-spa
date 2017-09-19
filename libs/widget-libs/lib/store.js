@@ -21,7 +21,10 @@ var _Api2 = _interopRequireDefault(_Api);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* eslint-disable no-underscore-dangle */
+// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+// logger,
 
+// import logger from 'redux-logger';
 var store = (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default.withExtraArgument({ SHEETS_API: _Api2.default })));
 
 exports.default = store;

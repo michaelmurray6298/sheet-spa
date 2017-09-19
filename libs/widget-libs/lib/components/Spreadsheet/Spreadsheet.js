@@ -139,7 +139,7 @@ var Spreadsheet = function (_Component) {
 
 Spreadsheet.propTypes = {
   fetchSheet: _propTypes2.default.func.isRequired,
-  sheet: _propTypes2.default.shape({ range: '', majorDimension: '', header: { headerCellIds: [], headerCellsById: {} }, rowIds: [], rowsById: {} }).isRequired
+  sheet: _propTypes2.default.shape({ range: '', majorDimension: '', header: { headerCellIds: {}, headerCellsById: {} }, rowIds: {}, rowsById: {} }).isRequired
 };
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
