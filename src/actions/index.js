@@ -8,7 +8,7 @@ export function fetchSheet() {
     const majorDimension = data.majorDimension;
     const header = data.values[0];
     const rows = data.values.slice(1, data.values.length);
-    await dispatch({
+    return dispatch({
       type: SHEET_RETRIEVED,
       range,
       majorDimension,
