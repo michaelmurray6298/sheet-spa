@@ -18,5 +18,4 @@ ReactDOM.render(
 );
 registerServiceWorker();
 
-export default App;
 export { rootReducer, SHEETS_API };

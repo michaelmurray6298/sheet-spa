@@ -1,5 +1,5 @@
 
-const apiUrl = 'http://localhost:8003/graphql';
+const apiUrl = process.env.SHEETS_API_URL;
 
 export default class SHEETS_API {
   static fetchData(request) {

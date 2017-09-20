@@ -2,7 +2,9 @@
 
 # dependencies
 /node_modules
-.env
+
+/libs/widget-libs/lib
+/libs/widget-libs/node_modules
 
 # testing
 /coverage
