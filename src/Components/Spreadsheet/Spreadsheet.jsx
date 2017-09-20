@@ -21,7 +21,7 @@ class Spreadsheet extends Component {
 
     return (
       <div className="spreadsheet">
-        <Table celled striped definition>
+        <Table celled striped>
           <Table.Header>
             <Table.Row>
               { headerCellIds.map(headerCellId => <HeaderCell key={headerCellId} headerCellId={headerCellId} />) }
