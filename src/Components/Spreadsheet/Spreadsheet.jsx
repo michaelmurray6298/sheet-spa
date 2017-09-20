@@ -39,7 +39,7 @@ class Spreadsheet extends Component {
 
 Spreadsheet.propTypes = {
   fetchSheet: PropTypes.func.isRequired,
-  sheet: PropTypes.shape({ range: '', majorDimension: '', header: { headerCellIds: [], headerCellsById: {} }, rowIds: [], rowsById: {} }).isRequired,
+  sheet: PropTypes.shape({ range: '', majorDimension: '', header: { headerCellIds: {}, headerCellsById: {} }, rowIds: {}, rowsById: {} }).isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {

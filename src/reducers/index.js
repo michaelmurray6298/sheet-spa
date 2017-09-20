@@ -29,7 +29,7 @@ function sheet(state = { range: '', majorDimension: '', header: { headerCellIds:
       return state;
   }
 }
-
+export const sheets = sheet;
 const initialState = {
   ids: ['sheets'],
   byId: {},
