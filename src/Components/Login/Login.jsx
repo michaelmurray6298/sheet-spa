@@ -7,7 +7,7 @@ import './Login.css';
 export const Login = () => {
 
 
-  const GOOGLE_AUTH_URL = process.env.REACT_APP_GOOGLE_URL;
+  const BASE_URL = process.env.REACT_APP_SHEETS_API_URL;
     return (
       <Grid verticalAlign={'middle'}>
         <Grid.Row centered verticalAlign={'middle'}>
@@ -16,7 +16,7 @@ export const Login = () => {
               <Card.Content>
                 <Button
                   as="a"
-                  href={`${GOOGLE_AUTH_URL}/auth/google`}
+                  href={`${BASE_URL}/auth/google`}
                   className="butterButton"
                   size="large"
                   content="Login with Google"
