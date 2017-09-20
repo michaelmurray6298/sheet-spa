@@ -20,4 +20,8 @@ describe('App component', () => {
     );
     expect(toJson(component)).toMatchSnapshot();
   });
-});
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<App widgetId={'sheets'} />, div);
+  });
+}

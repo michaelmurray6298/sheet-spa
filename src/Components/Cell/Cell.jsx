@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import injectWidgetId from '../../utils/utils';
 
 
 const Cell = ({ cellId, cellsById }) => (
@@ -17,8 +18,9 @@ Cell.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const cellIds = state.sheet.rowsById[ownProps.rowId].cellIds;
-  const cellsById = state.sheet.rowsById[ownProps.rowId].cellsById;
+  const id = ownProps.widgetId;
+  const cellIds = state.widgets.byId[id].rowsById[ownProps.rowId].cellIds;
+  const cellsById = state.widgets.byId[id].rowsById[ownProps.rowId].cellsById;
   return {
     cellIds,
     cellsById,
@@ -26,6 +28,4 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
-export default connect(
-  mapStateToProps,
-)(Cell);
+export default injectWidgetId(connect(mapStateToProps)(Cell));
