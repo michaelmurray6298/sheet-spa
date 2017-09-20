@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import Cell from '../Cell/Cell';
+import injectWidgetId from '../../utils/utils';
 
 const Row = props => (
   <Table.Row>
@@ -16,15 +17,14 @@ Row.propTypes = {
   rowsById: PropTypes.shape({ cellIds: [], cellsById: {} }).isRequired,
 };
 
-const mapStateToProps = (state) => {
-  const rowIds = state.sheet.rowIds;
-  const rowsById = state.sheet.rowsById;
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.widgetId;
+  const rowIds = state.widgets.byId[id].rowIds;
+  const rowsById = state.widgets.byId[id].rowsById;
   return {
     rowIds,
     rowsById,
   };
 };
 
-export default connect(
-  mapStateToProps,
-)(Row);
+export default injectWidgetId(connect(mapStateToProps)(Row));

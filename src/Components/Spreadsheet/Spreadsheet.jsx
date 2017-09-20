@@ -6,11 +6,12 @@ import { connect } from 'react-redux';
 import { fetchSheet } from '../../actions';
 import HeaderCell from '../HeaderCell/HeaderCell';
 import Row from '../Row/Row';
+import injectWidgetId from '../../utils/utils';
 
 
 class Spreadsheet extends Component {
   componentDidMount() {
-    this.props.fetchSheet();
+    this.props.fetchSheet('1UcfQsQGTAAtjvyxv948z3hf0qiUnMNZF90-GcD7MF9g', 'Sheet1');
   }
   /* eslint-disable max-len */
 
@@ -38,11 +39,12 @@ class Spreadsheet extends Component {
 
 Spreadsheet.propTypes = {
   fetchSheet: PropTypes.func.isRequired,
-  sheet: PropTypes.shape({ range: '', majorDimension: '', header: { headerCellIds: [], headerCellsById: {} }, rowIds: [], rowsById: {} }).isRequired,
+  sheet: PropTypes.shape({ range: '', majorDimension: '', header: { headerCellIds: {}, headerCellsById: {} }, rowIds: {}, rowsById: {} }).isRequired,
 };
 
-const mapStateToProps = (state) => {
-  const sheet = state.sheet;
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.widgetId;
+  const sheet = state.widgets.byId[id];
   return {
     sheet,
   };
@@ -52,7 +54,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   fetchSheet,
 }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Spreadsheet);
+export default injectWidgetId(connect(mapStateToProps, mapDispatchToProps)(Spreadsheet));
