@@ -5,6 +5,7 @@
   "dependencies": {
     "prop-types": "15.5.10",
     "react": "15.6.1",
+    "react-cookies": "0.1.0",
     "react-dom": "15.6.1",
     "react-redux": "5.0.6",
     "redux": "3.7.2",
@@ -34,7 +35,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "node_modules/eslint/bin/eslint.js --ext=js --ext=jsx ."
+    "lint": "node_modules/eslint/bin/eslint.js --ext=js --fix --ext=jsx ."
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
