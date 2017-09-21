@@ -1,5 +1,5 @@
 
-const apiUrl = process.env.REACT_APP_SHEETS_API_URL;
+const apiUrl = `${process.env.REACT_APP_SHEETS_API_URL}/graphql`;
 
 
 export default class SHEETS_API {
