@@ -6,10 +6,10 @@ import { Segment, Container } from 'semantic-ui-react';
 import SheetForm from './components/SheetForm/SheetForm';
 import Login from './components/Login/Login';
 import Spreadsheet from './components/Spreadsheet/Spreadsheet';
-import BackButton from './components/BackButton/BackButton';
+import NavBar from './components/NavBar/NavBar';
 import WIDGET_ID from './constants/index';
 
-class App extends Component {
+export class App extends Component {
   getChildContext() {
     return { widgetId: this.props.widgetId };
   }
@@ -17,9 +17,10 @@ class App extends Component {
     const { currentPage } = this.props;
     return (
       <div className="App">
-        <Container>
-          {renderIf(currentPage === 'sheets')(<BackButton />)}
+        <Container >
+
           {renderIf(currentPage === 'login')(<Login />)}
+          {renderIf(currentPage !== 'login')(<NavBar />)}
           {renderIf(currentPage === 'form')(<SheetForm />)}
           {renderIf(currentPage === 'sheets')(<Segment>
             <Spreadsheet />

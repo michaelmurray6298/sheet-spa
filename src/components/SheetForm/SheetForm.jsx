@@ -21,7 +21,7 @@ export class SheetForm extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleForm}>
+      <Form size="large" onSubmit={this.handleForm}>
         <Form.Field>
           <input type="string" name="id" placeholder="Enter Spreadsheet ID" />
         </Form.Field>

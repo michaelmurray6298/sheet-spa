@@ -9,7 +9,7 @@ import WIDGET_ID from '../../constants/index';
 
 
 const BackButton = props => (
-  <Button content="Back" onClick={() => props.displayForm()} />
+  <Button floated="left" content="Back" onClick={() => props.displayForm()} />
 );
 
 
