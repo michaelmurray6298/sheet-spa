@@ -2,17 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchSheet } from '../../actions';
 import HeaderCell from '../HeaderCell/HeaderCell';
 import Row from '../Row/Row';
 import WIDGET_ID from '../../constants/index';
 import injectWidgetId from '../../utils/utils';
+/* eslint-disable max-len */
 
 
 export const Spreadsheet = ({ sheet }) => {
-  /* eslint-disable max-len */
   const headerCellIds = sheet.header.headerCellIds;
   const rowIds = sheet.rowIds;
   if (!rowIds) {
@@ -48,8 +46,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchSheet,
-}, dispatch);
-
-export default injectWidgetId(connect(mapStateToProps, mapDispatchToProps)(Spreadsheet));
+export default injectWidgetId(connect(mapStateToProps)(Spreadsheet));

@@ -6,6 +6,7 @@ import { Segment, Container } from 'semantic-ui-react';
 import SheetForm from './components/SheetForm/SheetForm';
 import Login from './components/Login/Login';
 import Spreadsheet from './components/Spreadsheet/Spreadsheet';
+import BackButton from './components/BackButton/BackButton';
 import WIDGET_ID from './constants/index';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <Container>
+          {renderIf(currentPage === 'sheets')(<BackButton />)}
           {renderIf(currentPage === 'login')(<Login />)}
           {renderIf(currentPage === 'form')(<SheetForm />)}
           {renderIf(currentPage === 'sheets')(<Segment>
