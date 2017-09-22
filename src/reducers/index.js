@@ -49,7 +49,7 @@ const initialState = {
 const widgets = (state = initialState, action) => ({
   ...state,
   byId: {
-    sheets: sheets(state.byId[WIDGET_ID], action),
+    [WIDGET_ID]: sheets(state.byId[WIDGET_ID], action),
   },
 });
 
