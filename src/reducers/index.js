@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
-import { SHEET_RETRIEVED } from '../actions';
+import { SHEET_RETRIEVED, STORE_SHEET_DATA } from '../actions';
+import WIDGET_ID from '../constants/index';
+import currentPage from './renderReducer';
 /* eslint-disable max-len */
-function sheet(state = { range: '', majorDimension: '', header: { headerCellIds: [], headerCellsById: {} }, rowIds: [], rowsById: {} }, action) {
+function sheet(state = { range: '', majorDimension: '', header: { headerCellIds: [], headerCellsById: {} }, rowIds: [], rowsById: {}, spreadsheetId: '', sheetName: '' }, action) {
   switch (action.type) {
     case SHEET_RETRIEVED:
       return {
@@ -25,20 +27,29 @@ function sheet(state = { range: '', majorDimension: '', header: { headerCellIds:
           return result2;
         }, {}),
       };
+    case STORE_SHEET_DATA:
+      return {
+        ...state,
+        spreadsheetId: action.spreadsheetId,
+        sheetName: action.sheetName,
+      };
     default:
       return state;
   }
 }
-export const sheets = sheet;
+export const sheets = combineReducers({
+  sheet,
+  currentPage,
+});
 const initialState = {
-  ids: ['sheets'],
+  ids: [WIDGET_ID],
   byId: {},
 };
 
 const widgets = (state = initialState, action) => ({
   ...state,
   byId: {
-    sheets: sheet(state.byId.sheet, action),
+    sheets: sheets(state.byId[WIDGET_ID], action),
   },
 });
 

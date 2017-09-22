@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
@@ -6,45 +7,42 @@ import { connect } from 'react-redux';
 import { fetchSheet } from '../../actions';
 import HeaderCell from '../HeaderCell/HeaderCell';
 import Row from '../Row/Row';
+import WIDGET_ID from '../../constants/index';
 import injectWidgetId from '../../utils/utils';
 
 
-class Spreadsheet extends Component {
-  componentDidMount() {
-    this.props.fetchSheet('1UcfQsQGTAAtjvyxv948z3hf0qiUnMNZF90-GcD7MF9g', 'Sheet1');
-  }
+export const Spreadsheet = ({ sheet }) => {
   /* eslint-disable max-len */
-
-
-  render() {
-    const headerCellIds = this.props.sheet.header.headerCellIds;
-    const rowIds = this.props.sheet.rowIds;
-
-    return (
-      <div className="spreadsheet">
-        <Table celled striped>
-          <Table.Header>
-            <Table.Row>
-              { headerCellIds.map(headerCellId => <HeaderCell key={headerCellId} headerCellId={headerCellId} />) }
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            { rowIds.map(rowId => <Row key={rowId} rowId={rowId} />) }
-          </Table.Body>
-        </Table>
-      </div>
-    );
+  const headerCellIds = sheet.header.headerCellIds;
+  const rowIds = sheet.rowIds;
+  if (!rowIds) {
+    return (<div>Loading</div>);
   }
-}
-
-Spreadsheet.propTypes = {
-  fetchSheet: PropTypes.func.isRequired,
-  sheet: PropTypes.shape({ range: '', majorDimension: '', header: { headerCellIds: {}, headerCellsById: {} }, rowIds: {}, rowsById: {} }).isRequired,
+  return (
+    <div className="spreadsheet">
+      <Table celled striped>
+        <Table.Header>
+          <Table.Row>
+            { headerCellIds.map(headerCellId => <HeaderCell key={headerCellId} headerCellId={headerCellId} />) }
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          { rowIds.map(rowId => <Row key={rowId} rowId={rowId} />) }
+        </Table.Body>
+      </Table>
+    </div>
+  );
 };
 
+Spreadsheet.propTypes = {
+  sheet: PropTypes.shape({ range: '', majorDimension: '', header: { headerCellIds: {}, headerCellsById: {} }, rowIds: {}, rowsById: {} }).isRequired,
+};
+Spreadsheet.defaultProps = {
+  widgetId: WIDGET_ID,
+};
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.widgetId;
-  const sheet = state.widgets.byId[id];
+  const sheet = state.widgets.byId[id].sheet;
   return {
     sheet,
   };
