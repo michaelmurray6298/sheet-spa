@@ -4,6 +4,7 @@ import { Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import Cell from '../Cell/Cell';
 import injectWidgetId from '../../utils/utils';
+import WIDGET_ID from '../../constants/index';
 
 const Row = props => (
   <Table.Row>
@@ -16,11 +17,14 @@ Row.propTypes = {
   rowId: PropTypes.number.isRequired,
   rowsById: PropTypes.shape({ cellIds: [], cellsById: {} }).isRequired,
 };
+Row.defaultProps = {
+  widgetId: WIDGET_ID,
+};
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.widgetId;
-  const rowIds = state.widgets.byId[id].rowIds;
-  const rowsById = state.widgets.byId[id].rowsById;
+  const rowIds = state.widgets.byId[id].sheet.rowIds;
+  const rowsById = state.widgets.byId[id].sheet.rowsById;
   return {
     rowIds,
     rowsById,
