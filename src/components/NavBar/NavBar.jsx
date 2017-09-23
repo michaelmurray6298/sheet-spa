@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Grid,
   Card } from 'semantic-ui-react';
 import { connect } from 'react-redux';
@@ -8,23 +8,18 @@ import BackButton from '../BackButton/BackButton';
 import Logout from '../Logout/Logout';
 import WIDGET_ID from '../../constants/index';
 /* eslint-disable no-shadow */
-export class NavBar extends Component {
-  render() {
-    const { currentPage } = this.props;
-    return (
-      <Grid verticalAlign={'top'} >
-        <Grid.Row >
-          <Grid.Column verticalAlign={'middle'}>
-            <Card.Content>
-              {renderIf(currentPage === 'sheets')(<BackButton />)}
-              {renderIf(currentPage !== 'login')(<Logout />)}
-            </Card.Content>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    );
-  }
-}
+export const NavBar = ({ currentPage }) => (
+  <Grid verticalAlign={'top'} >
+    <Grid.Row >
+      <Grid.Column verticalAlign={'middle'}>
+        <Card.Content>
+          {renderIf(currentPage === 'sheets')(<BackButton />)}
+          {renderIf(currentPage !== 'login')(<Logout />)}
+        </Card.Content>
+      </Grid.Column>
+    </Grid.Row>
+  </Grid>
+);
 
 
 NavBar.propTypes = {
