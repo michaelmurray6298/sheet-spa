@@ -1,0 +1,11 @@
+sheet-spa:
+  build:
+    dockerfile: Dockerfile
+  environment:
+    - CI=true
+
+npm-publisher:
+  image: databraiddb/npm-publisher:latest
+  volumes:
+    - ./libs/widget-libs:/app/
+  encrypted_env_file: env.encrypted

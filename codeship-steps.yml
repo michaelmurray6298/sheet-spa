@@ -1,0 +1,12 @@
+- service: sheet-spa
+  command: npm run lint
+  tag: dev
+- service: sheet-spa
+  command: npm run test -- -u
+  tag: dev
+- service: sheet-spa
+  command: npm run create-module
+  tag: dev
+- service: npm-publisher
+  command: publish
+  tag: master
