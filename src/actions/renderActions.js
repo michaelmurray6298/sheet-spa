@@ -1,5 +1,6 @@
 export const RENDER_LOGIN = 'RENDER_LOGIN';
 export const RENDER_FORM = 'RENDER_FORM';
+export const LOAD_SHEETLIST_DATA = 'LOAD_SHEETLIST_DATA';
 export const RENDER_SHEETS = 'RENDER_SHEETS';
 export const LOGOUT = 'LOGOUT';
 
@@ -8,6 +9,7 @@ export const displayLogin = (dispatch) => {
     type: RENDER_LOGIN,
   });
 };
+
 export const displayForm = () => (dispatch) => {
   dispatch({
     type: RENDER_FORM,

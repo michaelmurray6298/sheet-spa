@@ -14,7 +14,6 @@ export const triggerLogout = (logout) => {
 export const Logout = ({ logout }) => (
 
   <Button
-    floated="right"
     as="a"
     onClick={() => { triggerLogout(logout); }}
     className="hand peace icon"

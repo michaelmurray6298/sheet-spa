@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import { SHEET_RETRIEVED, STORE_SHEET_DATA } from '../actions';
+import { LOAD_SHEETLIST_DATA } from '../actions/renderActions';
 import WIDGET_ID from '../constants/index';
 import currentPage from './renderReducer';
 /* eslint-disable max-len */
-function sheet(state = { range: '', majorDimension: '', header: { headerCellIds: [], headerCellsById: {} }, rowIds: [], rowsById: {}, spreadsheetId: '', sheetName: '' }, action) {
+function sheet(state = { range: '', majorDimension: '', header: { headerCellIds: [], headerCellsById: {} }, rowIds: [], rowsById: {}, spreadsheetId: '', sheetName: '', sheetList: [] }, action) {
   switch (action.type) {
     case SHEET_RETRIEVED:
       return {
+        ...state,
         range: action.sheetData.sheets.sheets[0].range,
         majorDimension: action.sheetData.sheets.sheets[0].majorDimension,
         header: { headerCellIds: action.sheetData.sheets.sheets[0].values[0].map((value, idx) => idx + 1),
@@ -32,6 +34,11 @@ function sheet(state = { range: '', majorDimension: '', header: { headerCellIds:
         ...state,
         spreadsheetId: action.spreadsheetId,
         sheetName: action.sheetName,
+      };
+    case LOAD_SHEETLIST_DATA:
+      return {
+        ...state,
+        sheetList: action.sheetList,
       };
     default:
       return state;
