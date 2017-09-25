@@ -6,30 +6,27 @@ import injectWidgetId from '../../utils/utils';
 import WIDGET_ID from '../../constants/index';
 
 
-const Cell = ({ cellId, cellsById }) => (
-  <Table.Cell>
-    {`${cellsById[cellId]}`}
-  </Table.Cell>
+const HeaderCell = ({ headerCellId, headerCellsById }) => (
+  <Table.HeaderCell>{`${headerCellsById[headerCellId]}`}</Table.HeaderCell>
 );
 
 
-Cell.propTypes = {
-  cellId: PropTypes.number.isRequired,
-  cellsById: PropTypes.shape({ 1: 'Cell A2' }).isRequired,
+HeaderCell.propTypes = {
+  headerCellId: PropTypes.number.isRequired,
+  headerCellsById: PropTypes.shape({ 1: 'Header A' }).isRequired,
 };
-Cell.defaultProps = {
+HeaderCell.defaultProps = {
   widgetId: WIDGET_ID,
 };
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.widgetId;
-  const cellIds = state.widgets.byId[id].sheet.rowsById[ownProps.rowId].cellIds;
-  const cellsById = state.widgets.byId[id].sheet.rowsById[ownProps.rowId].cellsById;
+  const headerCellIds = state.widgets.byId[id].sheet.header.headerCellIds;
+  const headerCellsById = state.widgets.byId[id].sheet.header.headerCellsById;
   return {
-    cellIds,
-    cellsById,
+    headerCellIds,
+    headerCellsById,
   };
 };
 
-
-export default injectWidgetId(connect(mapStateToProps)(Cell));
+export default injectWidgetId(connect(mapStateToProps)(HeaderCell));
